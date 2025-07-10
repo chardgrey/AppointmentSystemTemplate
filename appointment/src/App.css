@@ -1,0 +1,308 @@
+/* Essential custom styles not covered by Tailwind */
+
+/* Status indicators with custom colors */
+.status-confirmed {
+  background-color: var(--color-success-light);
+  color: var(--color-success-hover);
+  border: 1px solid var(--color-success);
+}
+
+.status-pending {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-hover);
+  border: 1px solid var(--color-accent);
+}
+
+.status-cancelled {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+/* Animation for smooth transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utility Classes */
+.padding-xs { padding: 4px; }
+.padding-sm { padding: 8px; }
+.padding-md { padding: 16px; }
+.padding-lg { padding: 24px; }
+.padding-xl { padding: 32px; }
+
+/* Dark Premium Hero Styles */
+.hero-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-bg-gradient);
+  overflow: hidden;
+  color: var(--hero-text-primary);
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--hero-accent-overlay);
+  animation: gradientShift 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: var(--hero-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--hero-text-secondary);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.5rem;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--hero-shimmer), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.hero-btn:hover::before {
+  left: 100%;
+}
+
+.hero-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-btn.primary {
+  background: var(--hero-btn-primary-gradient);
+  color: var(--hero-text-primary);
+  box-shadow: var(--hero-shadow-primary);
+}
+
+.hero-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hero-shadow-primary-hover);
+}
+
+.hero-btn.secondary {
+  background: var(--hero-cta-secondary);
+  color: var(--hero-text-primary);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+  background: var(--hero-cta-secondary-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--hero-shadow-card);
+  transition: all 0.3s ease;
+  transform: rotate(3deg);
+  color: #1f2937 !important; /* Force dark text color */
+}
+
+.hero-card h3 {
+  color: #1f2937 !important; /* Specifically target h3 elements */
+}
+
+.hero-card:hover {
+  transform: rotate(0deg);
+  box-shadow: var(--hero-shadow-card-hover);
+}
+
+.hero-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  opacity: 0.1;
+  border-radius: 50%;
+}
+
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-dot:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  background: var(--hero-glow-blue);
+  animation-delay: 0s;
+}
+
+.floating-dot:nth-child(2) {
+  top: 50%;
+  left: 80%;
+  background: var(--hero-glow-green);
+  animation-delay: 2s;
+}
+
+.floating-dot:nth-child(3) {
+  top: 80%;
+  left: 30%;
+  background: var(--hero-glow-orange);
+  animation-delay: 4s;
+}
+
+/* Accent Highlighting */
+.hero-accent-text {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-container {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .hero-card {
+    transform: rotate(0deg);
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .hero-btn {
+    padding: 1rem 1.75rem;
+    font-size: 1.05rem;
+  }
+}
